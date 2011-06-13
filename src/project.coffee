@@ -323,7 +323,7 @@ class Project
         # .. ok ..
 
       try
-        output = eco.compile(new String(code))
+        output = eco.precompile(new String(code))
       catch err
         sys.puts " * Error compiling #{file}"
         sys.puts err.message
