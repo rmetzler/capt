@@ -323,7 +323,7 @@ class Project
         # .. ok ..
 
       try
-        output = eco.precompile(new String(code))
+        output = eco.compile(new String(code))
       catch err
         sys.puts " * Error compiling #{file}"
         sys.puts err.message
@@ -334,8 +334,8 @@ class Project
         Path.basename(file, ".eco").capitalize()
       ].join("")
       
-      output = output.replace(/^module.exports/, "this.$templates.#{templateName}")
-      output = "if(!this.$templates){\n  $templates={};\n};\n\n" + output
+      output = output.toString().replace(/^module.exports/, "this.$templates.#{templateName}");
+      output = "if(!this.$templates){\n  $templates={};\n};\n\n this.$templates.#{templateName} = " + output
       
       sys.puts " * Compiled " + outpath
       fs.writeFileSync Path.join(@root, outpath), output
