@@ -221,6 +221,7 @@ task 'generate controller', 'create a new controller', (arguments) ->
 
   try
     fs.mkdirSync "#{project.root}/app/views/#{controller}", 0755
+    fs.mkdirSync "#{project.root}/spec/views/#{controller}", 0755
     fs.mkdirSync "#{project.root}/app/templates/#{controller}", 0755
   catch e
     # ...
