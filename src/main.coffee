@@ -220,9 +220,9 @@ task 'generate controller', 'create a new controller', (arguments) ->
     sys.puts " * Created #{to}"
 
   try
-    fs.mkdirSync "#{project.root}/app/views/#{controller}", 0755
-    fs.mkdirSync "#{project.root}/spec/views/#{controller}", 0755
-    fs.mkdirSync "#{project.root}/app/templates/#{controller}", 0755
+    fs.mkdirSync "#{project.root}/app/views/#{controller}", 0755 
+    fs.mkdirSync "#{project.root}/spec/views/#{controller}", 0755 
+    fs.mkdirSync "#{project.root}/app/views/templates/#{controller}", 0755
   catch e
     # ...
     
@@ -246,11 +246,11 @@ task 'generate view', 'create a new view', (arguments) ->
   if !Path.existsSync("#{project.root}/app/views/#{controller}")
     fs.mkdirSync "#{project.root}/app/views/#{controller}", 0755
 
-  if !Path.existsSync("#{project.root}/app/templates/#{controller}")
-    fs.mkdirSync "#{project.root}/app/templates/#{controller}", 0755
+  if !Path.existsSync("#{project.root}/app/views/templates/#{controller}")
+    fs.mkdirSync "#{project.root}/app/views/templates/#{controller}", 0755  
 
   copyFile "#{root}/templates/views/view.coffee", "app/views/#{controller}/#{view}.#{project.language()}"
-  copyFile "#{root}/templates/templates/template.eco", "app/templates/#{controller}/#{view}.eco"
+  copyFile "#{root}/templates/templates/template.eco", "app/views/templates/#{controller}/#{view}.eco"
   copyFile "#{root}/templates/views/spec.coffee", "spec/views/#{controller}/#{view}.#{project.language()}"
 
 # task 'spec', 'run the specs', (arguments) ->
