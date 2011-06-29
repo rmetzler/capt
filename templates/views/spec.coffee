@@ -18,7 +18,7 @@ describe '<%= controller %> controller', ->
       x.render()
 
     # Implement as you see fit
-    xit 'should render some text', ->
+    it 'should render some text', ->
       x = new <%= controller.capitalize() %><%= view.capitalize() %>View { el : $("<div />") }
       x.render()
       expect(x.$(".myselector").html()).toMatch /some text/
